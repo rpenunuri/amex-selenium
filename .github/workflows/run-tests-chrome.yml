@@ -1,0 +1,17 @@
+name: Run tests with chrome
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: 
+      - '*'
+jobs:
+  playwright:
+    name: 'Run selenium tests'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run tests with Docker Compose
+        run: |
+          chmod +x ./scripts/run-selenium-tests.sh
+          ./scripts/run-selenium-tests.sh
